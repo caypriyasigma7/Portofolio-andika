@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pendidikan - ANDIKA CAHYA</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script>
         tailwind.config = {
             theme: {
@@ -72,31 +72,51 @@
             0%, 100% { opacity: 0.5; transform: translateX(-50%) scale(1); }
             50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
         }
+
+        /* Navbar Mobile Menu */
+        #mobileMenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        #mobileMenu.active {
+            max-height: 400px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-orange-50 via-amber-50 to-white text-slate-800">
 
-<!-- Navbar -->
-<nav class="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-lg border-b border-orange-100 shadow-lg">
-    <div class="max-w-7xl mx-auto px-4">
-        <div class="flex items-center justify-between py-4">
-            <a href="index.html" class="text-2xl font-extrabold bg-gradient-to-r from-primary to-primaryDark bg-clip-text text-transparent"> ANDIKA CAHYA </a>
-            <div class="hidden md:flex items-center gap-8 font-semibold">
-                <a href="index.html" class="hover:text-primary transition">Home</a>
-                <a href="index.html#about" class="hover:text-primary transition">About</a>
-                <a href="cisat.html" class="text-primary border-b-2 border-primary pb-1"> Pendidikan </a>
-                <a href="pkl.html" class="hover:text-primary transition"> PKL </a>
+<!-- ================= NAVBAR ================= -->
+<nav id="navbar" class="fixed top-0 left-0 w-full z-50 bg-white/70 backdrop-blur-lg border-b border-orange-100/50 transition-all duration-300 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-4">
+            <!-- Logo -->
+            <a href="index.html" class="text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-primary to-primaryDark bg-clip-text text-transparent hover:scale-105 transition-all duration-300">
+                ANDIKA CAHYA
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8 text-[15px] font-semibold">
+                <a href="index.html" class="hover:text-primary transition-all duration-300 pb-1 hover:border-b-2 hover:border-primary">Home</a>
+                <a href="index.html#about" class="hover:text-primary transition-all duration-300 pb-1 hover:border-b-2 hover:border-primary">About</a>
+                <a href="cisat.html" class="text-primary border-b-2 border-primary pb-1 font-bold">Pendidikan</a>
+                <a href="pkl.html" class="hover:text-primary transition-all duration-300 pb-1 hover:border-b-2 hover:border-primary">PKL</a>
             </div>
-            <button id="menuBtn" class="md:hidden text-primary text-2xl">
-                <i class="fas fa-bars"></i>
+
+            <!-- Mobile Button -->
+            <button id="menuBtn" class="md:hidden text-2xl p-2 rounded-xl hover:bg-orange-100/50 transition-all duration-300" type="button" aria-label="Toggle menu">
+                <i class="fas fa-bars text-primary"></i>
             </button>
         </div>
+
         <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden flex-col gap-4 py-4 font-semibold">
-            <a href="index.html" class="hover:text-primary">Home</a>
-            <a href="index.html#about" class="hover:text-primary">About</a>
-            <a href="cisat.html" class="text-primary"> Pendidikan </a>
-            <a href="pkl.html" class="hover:text-primary"> PKL </a>
+        <div id="mobileMenu" class="md:hidden flex flex-col gap-5 text-center">
+            <a href="index.html" class="hover:text-primary text-lg py-2 hover:bg-orange-50/50 rounded-xl transition-all duration-300">Home</a>
+            <a href="index.html#about" class="hover:text-primary text-lg py-2 hover:bg-orange-50/50 rounded-xl transition-all duration-300">About</a>
+            <a href="cisat.html" class="text-primary font-bold text-lg py-2 bg-orange-50/50 rounded-xl">Pendidikan</a>
+            <a href="pkl.html" class="hover:text-primary text-lg py-2 hover:bg-orange-50/50 rounded-xl transition-all duration-300">PKL</a>
         </div>
     </div>
 </nav>
@@ -109,12 +129,13 @@
             <div class="inline-block p-4 bg-white/80 backdrop-blur-lg rounded-3xl shadow-2xl border border-orange-100">
                 <img src="cisat logo.jpg" 
                      alt="Logo SMK Cibitung 1" 
-                     class="w-32 h-32 md:w-48 md:h-48 school-logo rounded-2xl object-contain mx-auto">
+                     class="w-32 h-32 md:w-48 md:h-48 school-logo rounded-2xl object-contain mx-auto"
+                     loading="lazy">
             </div>
         </div>
         
         <div class="inline-flex items-center gap-4 bg-white shadow-2xl px-8 py-5 rounded-3xl animate-float mb-10">
-            <i class="fas fa-graduation-cap text-4xl text-primary"></i>
+            <i class="fas fa-graduation-cap text-4xl text-primary" aria-hidden="true"></i>
             <h1 class="text-4xl md:text-7xl font-extrabold bg-gradient-to-r from-primary to-primaryDark bg-clip-text text-transparent"> Pendidikan </h1>
         </div>
         
@@ -155,7 +176,7 @@
                     <div class="bg-white p-8 rounded-3xl shadow-xl border border-orange-100">
                         <div class="flex items-center gap-4 mb-5">
                             <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-primaryDark flex items-center justify-center text-white text-2xl shadow-lg">
-                                <i class="fas fa-school"></i>
+                                <i class="fas fa-school" aria-hidden="true"></i>
                             </div>
                             <div>
                                 <h3 class="text-2xl font-bold text-primary"> 2022 </h3>
@@ -171,7 +192,7 @@
                     <div class="bg-white p-8 rounded-3xl shadow-xl border border-orange-100">
                         <div class="flex items-center gap-4 mb-5">
                             <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primaryLight to-primary flex items-center justify-center text-white text-2xl shadow-lg">
-                                <i class="fas fa-book-open"></i>
+                                <i class="fas fa-book-open" aria-hidden="true"></i>
                             </div>
                             <div>
                                 <h3 class="text-2xl font-bold text-primary"> 2023 </h3>
@@ -179,9 +200,9 @@
                             </div>
                         </div>
                         <ul class="space-y-3 text-lg">
-                            <li><i class="fas fa-check-circle text-primary mr-2"></i> Mikrotik</li>
-                            <li><i class="fas fa-check-circle text-primary mr-2"></i> Internet Of Things</li>
-                            <li><i class="fas fa-check-circle text-primary mr-2"></i> Project PKK</li>
+                            <li><i class="fas fa-check-circle text-primary mr-2" aria-hidden="true"></i> Mikrotik</li>
+                            <li><i class="fas fa-check-circle text-primary mr-2" aria-hidden="true"></i> Internet Of Things</li>
+                            <li><i class="fas fa-check-circle text-primary mr-2" aria-hidden="true"></i> Project PKK</li>
                         </ul>
                     </div>
                 </div>
@@ -190,7 +211,7 @@
                     <div class="bg-white p-8 rounded-3xl shadow-xl border border-orange-100">
                         <div class="flex items-center gap-4 mb-5">
                             <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-primaryDark flex items-center justify-center text-white text-2xl shadow-lg">
-                                <i class="fas fa-code"></i>
+                                <i class="fas fa-code" aria-hidden="true"></i>
                             </div>
                             <div>
                                 <h3 class="text-2xl font-bold text-primary"> 2024 </h3>
@@ -198,9 +219,9 @@
                             </div>
                         </div>
                         <ul class="space-y-3 text-lg">
-                            <li><i class="fas fa-check-circle text-primary mr-2"></i> Pendalaman Materi SIJA</li>
-                            <li><i class="fas fa-check-circle text-primary mr-2"></i> Persiapan PKL Industri</li>
-                            <li><i class="fas fa-check-circle text-primary mr-2"></i> Mempelajari Dasar Pembuatan Web</li>
+                            <li><i class="fas fa-check-circle text-primary mr-2" aria-hidden="true"></i> Pendalaman Materi SIJA</li>
+                            <li><i class="fas fa-check-circle text-primary mr-2" aria-hidden="true"></i> Persiapan PKL Industri</li>
+                            <li><i class="fas fa-check-circle text-primary mr-2" aria-hidden="true"></i> Mempelajari Dasar Pembuatan Web</li>
                         </ul>
                     </div>
                 </div>
@@ -210,7 +231,7 @@
                     <div class="bg-gradient-to-br from-green-100 to-emerald-100 p-8 rounded-3xl shadow-2xl border border-green-200">
                         <div class="flex items-center gap-4 mb-5">
                             <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white text-2xl shadow-lg">
-                                <i class="fas fa-briefcase"></i>
+                                <i class="fas fa-briefcase" aria-hidden="true"></i>
                             </div>
                             <div>
                                 <h3 class="text-2xl font-bold text-green-700"> 2025 - 2026 </h3>
@@ -218,10 +239,10 @@
                             </div>
                         </div>
                         <ul class="space-y-3 text-lg">
-                            <li><i class="fas fa-check-circle text-green-600 mr-2"></i> PKL selama 11 bulan di PT ALCOMEXINDO</li>
-                            <li><i class="fas fa-check-circle text-green-600 mr-2"></i> Pengalaman kerja di lingkungan industri</li>
-                            <li><i class="fas fa-check-circle text-green-600 mr-2"></i> Ujian Kompetensi & Ujian Sekolah</li>
-                            <li class="font-bold text-green-700"><i class="fas fa-graduation-cap mr-2"></i> LULUS TAHUN 2026</li>
+                            <li><i class="fas fa-check-circle text-green-600 mr-2" aria-hidden="true"></i> PKL selama 11 bulan di PT ALCOMEXINDO</li>
+                            <li><i class="fas fa-check-circle text-green-600 mr-2" aria-hidden="true"></i> Pengalaman kerja di lingkungan industri</li>
+                            <li><i class="fas fa-check-circle text-green-600 mr-2" aria-hidden="true"></i> Ujian Kompetensi & Ujian Sekolah</li>
+                            <li class="font-bold text-green-700"><i class="fas fa-graduation-cap mr-2" aria-hidden="true"></i> LULUS TAHUN 2026</li>
                         </ul>
                     </div>
                 </div>
@@ -239,77 +260,62 @@
         </div>
         <div class="grid md:grid-cols-3 gap-8">
             <!-- Networking -->
-            <div class="bg-white p-8 rounded-3xl shadow-xl hover:-translate-y-3 transition duration-300 border border-orange-100">
-                <div class="w-20 h-20 mx-auto mb-6 rounded-3xl bg-gradient-to-br from-primary to-primaryDark flex items-center justify-center text-white text-3xl shadow-xl">
-                    <i class="fas fa-network-wired"></i>
+            <div class="bg-white p-8 rounded-3xl shadow-xl hover:-translate-y-3 transition-all duration-300 border border-orange-100 group">
+                <div class="w-20 h-20 mx-auto mb-6 rounded-3xl bg-gradient-to-br from-primary to-primaryDark flex items-center justify-center text-white text-3xl shadow-xl group-hover:scale-110 transition-all duration-300">
+                    <i class="fas fa-network-wired" aria-hidden="true"></i>
                 </div>
                 <h3 class="text-2xl font-bold text-center mb-6"> Networking </h3>
                 <div class="space-y-5">
                     <div>
-                        <div class="flex justify-between mb-2"><span>LAN / WAN</span><span>70%</span></div>
+                        <div class="flex justify-between mb-2"><span>LAN / WAN</span><span>50%</span></div>
                         <div class="w-full h-3 bg-orange-100 rounded-full overflow-hidden">
-                            <div class="h-full bg-primary rounded-full w-[70%]"></div>
+                            <div class="h-full bg-primary rounded-full w-[50%] group-hover:w-[60%] transition-all duration-500"></div>
                         </div>
                     </div>
                     <div>
-                        <div class="flex justify-between mb-2"><span>Mikrotik</span><span>70%</span></div>
+                        <div class="flex justify-between mb-2"><span>Mikrotik</span><span>50%</span></div>
                         <div class="w-full h-3 bg-orange-100 rounded-full overflow-hidden">
-                            <div class="h-full bg-primary rounded-full w-[70%]"></div>
+                            <div class="h-full bg-primary rounded-full w-[50%] group-hover:w-[60%] transition-all duration-500"></div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- Web -->
-            <div class="bg-white p-8 rounded-3xl shadow-xl hover:-translate-y-3 transition duration-300 border border-orange-100">
-                <div class="w-20 h-20 mx-auto mb-6 rounded-3xl bg-gradient-to-br from-primaryLight to-primary flex items-center justify-center text-white text-3xl shadow-xl">
-                    <i class="fas fa-code"></i>
+            <div class="bg-white p-8 rounded-3xl shadow-xl hover:-translate-y-3 transition-all duration-300 border border-orange-100 group">
+                <div class="w-20 h-20 mx-auto mb-6 rounded-3xl bg-gradient-to-br from-primaryLight to-primary flex items-center justify-center text-white text-3xl shadow-xl group-hover:scale-110 transition-all duration-300">
+                    <i class="fas fa-code" aria-hidden="true"></i>
                 </div>
                 <h3 class="text-2xl font-bold text-center mb-6"> Web Development </h3>
                 <div class="space-y-5">
                     <div>
                         <div class="flex justify-between mb-2"><span>HTML/CSS</span><span>70%</span></div>
                         <div class="w-full h-3 bg-orange-100 rounded-full overflow-hidden">
-                            <div class="h-full bg-primary rounded-full w-[70%]"></div>
+                            <div class="h-full bg-primary rounded-full w-[70%] group-hover:w-[80%] transition-all duration-500"></div>
                         </div>
                     </div>
-    
                 </div>
             </div>
             <!-- IOT -->
-<div class="bg-white p-8 rounded-3xl shadow-xl hover:-translate-y-3 transition duration-300 border border-orange-100">
-    <div class="w-20 h-20 mx-auto mb-6 rounded-3xl bg-gradient-to-br from-primary to-primaryDark flex items-center justify-center text-white text-3xl shadow-xl">
-        <i class="fas fa-microchip"></i>
-    </div>
-
-    <h3 class="text-2xl font-bold text-center mb-6">
-        IOT
-    </h3>
-    <div class="space-y-5">
-        <div>
-            <div class="flex justify-between mb-2">
-                <span>Arduino IDE</span>
-                <span>60%</span>
+            <div class="bg-white p-8 rounded-3xl shadow-xl hover:-translate-y-3 transition-all duration-300 border border-orange-100 group">
+                <div class="w-20 h-20 mx-auto mb-6 rounded-3xl bg-gradient-to-br from-primary to-primaryDark flex items-center justify-center text-white text-3xl shadow-xl group-hover:scale-110 transition-all duration-300">
+                    <i class="fas fa-microchip" aria-hidden="true"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-center mb-6"> IOT </h3>
+                <div class="space-y-5">
+                    <div>
+                        <div class="flex justify-between mb-2"><span>Arduino IDE</span><span>60%</span></div>
+                        <div class="w-full h-3 bg-orange-100 rounded-full overflow-hidden">
+                            <div class="h-full bg-primary rounded-full w-[60%] group-hover:w-[70%] transition-all duration-500"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2"><span>Blynk</span><span>50%</span></div>
+                        <div class="w-full h-3 bg-orange-100 rounded-full overflow-hidden">
+                            <div class="h-full bg-primary rounded-full w-[50%] group-hover:w-[60%] transition-all duration-500"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="w-full h-3 bg-orange-100 rounded-full overflow-hidden">
-                <div class="h-full bg-primary rounded-full w-[60%]"></div>
-            </div>
-        </div>
-
-        <div>
-            <div class="flex justify-between mb-2">
-                <span>Blynk</span>
-                <span>50%</span>
-            </div>
-
-            <div class="w-full h-3 bg-orange-100 rounded-full overflow-hidden">
-                <div class="h-full bg-primary rounded-full w-[50%]"></div>
-            </div>
-        </div>
-
-    </div>
-
-</div>
         </div>
     </div>
 </section>
@@ -319,22 +325,22 @@
     <div class="max-w-4xl mx-auto">
         <div class="bg-white p-12 rounded-3xl shadow-2xl border border-orange-100 text-center">
             <div class="inline-flex items-center gap-4 bg-gradient-to-r from-primary to-primaryDark text-white px-10 py-5 rounded-3xl mb-8 shadow-xl">
-                <i class="fas fa-graduation-cap text-3xl"></i>
+                <i class="fas fa-graduation-cap text-3xl" aria-hidden="true"></i>
                 <span class="text-2xl font-bold"> SMK PROGRAM 4 TAHUN </span>
             </div>
             <h2 class="text-4xl md:text-5xl font-extrabold mb-6">
                 LULUS TAHUN 
-                <span class="bg-cream text-primary px-6 py-3 rounded-2xl inline-block shadow"> 2026 </span>
+                <span class="bg-cream text-primary px-6 py-3 rounded-2xl inline-block shadow font-bold"> 2026 </span>
             </h2>
             <p class="text-xl text-slate-700 leading-relaxed max-w-2xl mx-auto mb-10">
                 Menyelesaikan pendidikan SIJA selama 4 tahun dengan pengalaman PKL 11 bulan di perusahaan PT Alcomexindo di posisi Gudang Umum, siap kerja di dunia industri IT.
             </p>
             <div class="flex flex-col sm:flex-row gap-5 justify-center">
-                <a href="index.html" class="bg-gradient-to-r from-primary to-primaryDark text-white px-10 py-5 rounded-2xl text-lg font-bold shadow-xl hover:-translate-y-2 transition">
-                    <i class="fas fa-home mr-2"></i> Kembali ke Home
+                <a href="index.html" class="bg-gradient-to-r from-primary to-primaryDark text-white px-10 py-5 rounded-2xl text-lg font-bold shadow-xl hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl">
+                    <i class="fas fa-home mr-2" aria-hidden="true"></i> Kembali ke Home
                 </a>
-                <a href="pkl.html" class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-10 py-5 rounded-2xl text-lg font-bold shadow-xl hover:-translate-y-2 transition">
-                    <i class="fas fa-briefcase mr-2"></i> Pengalaman PKL
+                <a href="pkl.html" class="border-2 border-primary text-primary hover:bg-primary hover:text-white px-10 py-5 rounded-2xl text-lg font-bold shadow-xl hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl">
+                    <i class="fas fa-briefcase mr-2" aria-hidden="true"></i> Pengalaman PKL
                 </a>
             </div>
         </div>
@@ -346,54 +352,72 @@
     <div class="max-w-7xl mx-auto px-4 text-center">
         <h2 class="text-3xl font-extrabold mb-4"> ANDIKA CAHYA </h2>
         <div class="flex justify-center gap-5 mb-6">
-            <a href="index.html" class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center hover:bg-white/40 transition">
-                <i class="fas fa-home"></i>
+            <a href="index.html" class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center hover:bg-white/40 transition-all duration-300 hover:scale-110" aria-label="Home">
+                <i class="fas fa-home" aria-hidden="true"></i>
             </a>
-            <a href="pkl.html" class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center hover:bg-white/40 transition">
-                <i class="fas fa-briefcase"></i>
+            <a href="pkl.html" class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center hover:bg-white/40 transition-all duration-300 hover:scale-110" aria-label="PKL">
+                <i class="fas fa-briefcase" aria-hidden="true"></i>
             </a>
-            <a href="https://smkcibitung1.sch.id/" target="_blank" class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center hover:bg-white/40 transition">
-                <i class="fas fa-school"></i>
+            <a href="https://smkcibitung1.sch.id/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center hover:bg-white/40 transition-all duration-300 hover:scale-110" aria-label="SMK Cibitung 1">
+                <i class="fas fa-school" aria-hidden="true"></i>
             </a>
         </div>
         <p class="text-white/80"> © 2026 SMK Cibitung 1 — SIJA Program 4 Tahun | Lulus 2026 </p>
     </div>
 </footer>
 
+<!-- ================= SCRIPT ================= -->
 <script>
-    // Mobile menu
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-    });
+    // Mobile Menu Toggle
+    (function() {
+        const menuBtn = document.getElementById("menuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
 
-    // Navbar effect
-    window.addEventListener('scroll', () => {
-        const nav = document.querySelector('nav');
-        if (window.scrollY > 50) {
-            nav.classList.add('shadow-2xl');
-        } else {
-            nav.classList.remove('shadow-2xl');
+        if (menuBtn && mobileMenu) {
+            menuBtn.addEventListener("click", () => {
+                mobileMenu.classList.toggle("active");
+            });
         }
-    });
+    })();
 
-    // Animation scroll
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = 1;
-                entry.target.style.transform = 'translateY(0)';
-            }
+    // Navbar Scroll Effect
+    (function() {
+        const navbar = document.getElementById("navbar");
+        if (navbar) {
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add("bg-white/90", "shadow-2xl");
+                } else {
+                    navbar.classList.remove("bg-white/90", "shadow-2xl");
+                }
+            });
+        }
+    })();
+
+    // Scroll Animation
+    (function() {
+        const sections = document.querySelectorAll("section");
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach((section) => {
+            section.style.opacity = "0";
+            section.style.transform = "translateY(50px)";
+            section.style.transition = "all 0.8s ease";
+            observer.observe(section);
         });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('section').forEach(section => {
-        section.style.opacity = 0;
-        section.style.transform = 'translateY(50px)';
-        section.style.transition = 'all 0.8s ease';
-        observer.observe(section);
-    });
+    })();
 </script>
 
 </body>

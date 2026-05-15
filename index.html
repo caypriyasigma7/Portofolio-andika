@@ -1,333 +1,359 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portofolio - ANDIKA CAHYA</title>
+
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#1e40af',
-                        secondary: '#3b82f6',
+                        primary: "#2563eb",
+                        secondary: "#60a5fa",
                     },
                     animation: {
-                        'blink-glow': 'blinkGlow 2s ease-in-out infinite',
+                        "blink-glow": "blinkGlow 2.5s ease-in-out infinite",
+                        float: "float 4s ease-in-out infinite",
                     },
                     keyframes: {
                         blinkGlow: {
-                            '0%, 100%': { 
-                                boxShadow: '0 0 20px rgba(30, 64, 175, 0.3), 0 0 40px rgba(59, 130, 246, 0.2)',
-                                transform: 'scale(1)'
+                            "0%, 100%": {
+                                boxShadow: "0 0 25px rgba(37,99,235,0.25), 0 0 50px rgba(96,165,250,0.15)",
                             },
-                            '50%': { 
-                                boxShadow: '0 0 40px rgba(30, 64, 175, 0.6), 0 0 80px rgba(59, 130, 246, 0.4)',
-                                transform: 'scale(1.02)'
-                            }
-                        }
-                    }
-                }
-            }
-        }
+                            "50%": {
+                                boxShadow: "0 0 45px rgba(37,99,235,0.55), 0 0 90px rgba(96,165,250,0.35)",
+                            },
+                        },
+                        float: {
+                            "0%, 100%": { transform: "translateY(0px)" },
+                            "50%": { transform: "translateY(-12px)" },
+                        },
+                    },
+                },
+            },
+        };
     </script>
-</head>
-<body class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-x-hidden">
 
-    <!-- Navbar -->
-    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #2563eb;
+            border-radius: 10px;
+        }
+
+        /* Navbar Mobile */
+        #mobileMenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        #mobileMenu.active {
+            max-height: 400px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
+
+    <!-- ================= NAVBAR ================= -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur-lg border-b border-white/10 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
-                <div class="text-2xl font-bold text-primary">ANDIKA CAHYA</div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="hover:text-primary transition-colors pb-1 border-b-2 border-transparent hover:border-primary">Home</a>
-                    <a href="#about" class="hover:text-primary transition-colors pb-1 border-b-2 border-transparent hover:border-primary">About</a>
-                    <a href="cisat.html" class="hover:text-primary transition-colors pb-1 border-b-2 border-transparent hover:border-primary">Pendidikan</a>
-                    <a href="pkl.html" class="hover:text-primary transition-colors pb-1 border-b-2 border-transparent hover:border-primary">PKL</a>
+                <!-- Logo -->
+                <h1 class="text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    ANDIKA CAHYA
+                </h1>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-8 text-[15px] font-medium">
+                    <a href="#home" class="hover:text-primary transition duration-300">Home</a>
+                    <a href="#about" class="hover:text-primary transition duration-300">About</a>
+                    <a href="cisat.html" class="hover:text-primary transition duration-300">Pendidikan</a>
+                    <a href="pkl.html" class="hover:text-primary transition duration-300">PKL</a>
                 </div>
-                <button class="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors">
-                    <i class="fas fa-bars text-2xl"></i>
+
+                <!-- Mobile Button -->
+                <button id="menuBtn" class="md:hidden text-2xl p-2 rounded-lg hover:bg-white/10 transition" type="button" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
                 </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="md:hidden flex flex-col gap-5 text-center">
+                <a href="#home" class="hover:text-primary">Home</a>
+                <a href="#about" class="hover:text-primary">About</a>
+                <a href="cisat.html" class="hover:text-primary">Pendidikan</a>
+                <a href="pkl.html" class="hover:text-primary">PKL</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-4">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    <!-- ================= HERO ================= -->
+    <section id="home" class="min-h-screen flex items-center pt-28 pb-16 px-5">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <!-- LEFT -->
             <div class="space-y-8">
-                <div class="space-y-4">
-                    <h1 class="text-5xl md:text-7xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent leading-tight">
-                        Hi, I'm <span class="text-white block">Andika Cahya</span>
+                <div class="space-y-5">
+                    <p class="inline-block px-4 py-2 rounded-full bg-primary/20 border border-primary/30 text-primary text-sm font-semibold">
+                        PORTOFOLIO WEBSITE
+                    </p>
+                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black leading-tight">
+                        Hi, I'm
+                        <span class="block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                            Andika Cahya
+                        </span>
                     </h1>
-                    <div class="w-32 h-1 bg-gradient-to-r from-primary to-secondary"></div>
+                    <div class="w-32 h-1 rounded-full bg-gradient-to-r from-primary to-secondary"></div>
                 </div>
-                <p class="text-xl md:text-2xl text-gray-300 max-w-lg leading-relaxed">
-                    Siswa Lulusan <a href="cisat.html" 
-                        class="text-primary font-semibold hover:text-secondary underline decoration-2 underline-offset-4 transition-all duration-300">
+                <p class="text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl">
+                    Siswa lulusan
+                    <a href="cisat.html" class="text-primary font-semibold hover:text-secondary transition">
                         SMK Cibitung 1
-                    </a><br>
-                    <span class="text-primary font-semibold">Jurusan Sistem Informasi Jaringan dan Aplikasi</span>
+                    </a>
+                    jurusan
+                    <span class="text-secondary font-semibold">Sistem Informasi Jaringan dan Aplikasi</span>.
                 </p>
-                <div class="flex flex-wrap gap-4 pt-4">
-                    <a href="#about" class="bg-primary hover:bg-secondary px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
+                <!-- BUTTON -->
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="#about" class="bg-primary hover:bg-secondary px-8 py-4 rounded-2xl font-bold transition-all duration-300 hover:scale-105 shadow-xl">
                         Tentang Saya
                     </a>
-                    <a href="cisat.html" class="border-2 border-white/50 hover:bg-white/20 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:border-primary inline-flex items-center gap-2">
-                        <i class="fas fa-graduation-cap"></i>
+                    <a href="cisat.html" class="border border-white/30 hover:border-primary hover:bg-white/10 px-8 py-4 rounded-2xl font-bold transition-all duration-300">
+                        <i class="fas fa-graduation-cap mr-2"></i>
                         Pendidikan
                     </a>
                 </div>
             </div>
-            <!-- Hero Profile Photo - ANIMASI KEDIP SAJA -->
-            <div class="relative">
-                <!-- Outer Ring - Animasi Kedip Glow -->
-                <div class="w-96 h-96 bg-gradient-to-r from-primary/30 via-secondary/30 to-primary/30 rounded-3xl flex items-center justify-center mx-auto animate-blink-glow ring-8 ring-primary/20 ring-offset-4 ring-offset-transparent">
-                    <!-- Main Photo Container -->
-                    <div class="w-80 h-80 bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl flex items-center justify-center shadow-2xl border-8 border-white/20 overflow-hidden relative">
-                        <!-- Profile Photo - Hanya Hover Scale -->
-                        <img src="cahya.png" alt="Andika Cahya" 
-                             class="w-72 h-72 object-cover rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-500">
-                        <!-- Photo Overlay -->
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 flex items-end p-6 hover:cursor-pointer">
-                            <div class="text-center w-full">
-                                <p class="text-white/90 font-semibold text-sm bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full">ANDIKA CAHYA</p>
-                            </div>
-                        </div>
+
+            <!-- RIGHT -->
+            <div class="relative flex justify-center">
+                <!-- Glow -->
+                <div class="absolute w-80 h-80 bg-primary/20 blur-3xl rounded-full"></div>
+                <!-- Main Card -->
+                <div class="relative w-[320px] h-[420px] rounded-[35px] overflow-hidden border border-white/20 bg-white/5 backdrop-blur-xl shadow-2xl animate-blink-glow">
+                    <img src="cahya.png" alt="Foto profil Andika Cahya" class="w-full h-full object-cover hover:scale-105 transition duration-500" loading="lazy" />
+                    <!-- Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+                    <!-- Text -->
+                    <div class="absolute bottom-0 left-0 w-full p-6">
+                        <h2 class="text-3xl font-bold">Andika Cahya</h2>
+                        <p class="text-gray-300">SIJA Student</p>
                     </div>
                 </div>
-                <!-- Floating Elements - Tetap Bounce -->
-                <div class="absolute -top-6 -right-6 w-20 h-20 bg-gradient-to-r from-primary to-secondary rounded-2xl animate-bounce"></div>
-                <div class="absolute -bottom-8 -left-8 w-16 h-16 bg-gradient-to-r from-secondary to-primary rounded-xl animate-pulse delay-100"></div>
+                <!-- Floating -->
+                <div class="absolute -top-5 -right-5 w-16 h-16 rounded-2xl bg-gradient-to-r from-primary to-secondary animate-float"></div>
+                <div class="absolute -bottom-5 -left-5 w-12 h-12 rounded-xl bg-gradient-to-r from-secondary to-primary animate-pulse"></div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-32 px-4">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-24">
-                <h2 class="text-5xl md:text-6xl font-bold mb-6">Tentang Saya</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-8"></div>
-                <div class="w-20 h-1 bg-white/30 mx-auto"></div>
+    <!-- ================= ABOUT ================= -->
+    <section id="about" class="py-24 px-5">
+        <div class="max-w-6xl mx-auto">
+            <!-- Title -->
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-black mb-5">Tentang Saya</h2>
+                <div class="w-32 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
             </div>
-            
-            <div class="bg-white/5 backdrop-blur-sm rounded-3xl p-12 border border-white/20 shadow-2xl">
-                <!-- Profile Header with Photo - ANIMASI KEDIP SAJA -->
-                <div class="text-center mb-16 relative">
-                    <div class="mx-auto w-32 h-32 mb-6 relative animate-blink-glow">
-                        <!-- Profile Photo Circle -->
-                        <div class="w-full h-full rounded-full overflow-hidden shadow-2xl border-4 border-white/30 hover:border-primary/60 transition-all duration-300">
-                            <img src="cahya.png" alt="Andika Cahya" 
-                                 class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+
+            <!-- Content -->
+            <div class="grid lg:grid-cols-2 gap-10 bg-white/5 border border-white/10 backdrop-blur-lg rounded-[35px] p-8 md:p-12 shadow-2xl">
+                <!-- LEFT -->
+                <div class="space-y-8">
+                    <!-- Profile -->
+                    <div class="flex items-center gap-5">
+                        <div class="w-28 h-28 rounded-full overflow-hidden border-4 border-primary animate-blink-glow flex-shrink-0">
+                            <img src="cahya.png" alt="Foto profil Andika Cahya" class="w-full h-full object-cover" loading="lazy" />
                         </div>
-                        <!-- Online Status -->
-                        <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-green-400 border-4 border-slate-900 rounded-full animate-ping"></div>
-                        <div class="absolute bottom-1 right-1 w-6 h-6 bg-green-500 border-2 border-slate-900 rounded-full shadow-lg"></div>
+                        <div>
+                            <h3 class="text-3xl font-bold">Andika Cahya</h3>
+                            <p class="text-primary font-semibold">SMK Cibitung 1</p>
+                            <p class="text-gray-400">Sistem Informasi Jaringan dan Aplikasi</p>
+                        </div>
                     </div>
-                    <h3 class="text-4xl md:text-5xl font-bold text-white mb-4 bg-gradient-to-r from-white to-gray-200 bg-clip-text">Andika Cahya</h3>
-                    <p class="text-2xl text-primary font-semibold mb-2">
-                        Lulusan <a href="cisat.html" 
-                            class="hover:text-secondary underline decoration-2 underline-offset-4 transition-all duration-300">
-                            SMK Cibitung 1
-                        </a>
+
+                    <!-- Desc -->
+                    <p class="text-gray-300 leading-relaxed text-lg">
+                        Saya adalah lulusan SMK jurusan Sistem Informasi Jaringan dan Aplikasi yang memiliki semangat belajar, disiplin, teliti, dan mampu bekerja sama dalam tim.
                     </p>
-                    <p class="text-lg text-gray-400">Sistem Informasi Jaringan dan Aplikasi</p>
-                </div>
-                
-                <div class="grid md:grid-cols-2 gap-12 items-start">
-                    <div class="space-y-8">
-                        <!-- Pendidikan - Link ke cisat.html -->
-                        <div>
-                            <h4 class="text-2xl font-bold mb-6 text-primary flex items-center gap-3">
-                                <i class="fas fa-graduation-cap text-secondary"></i>
-                                Pendidikan
-                            </h4>
-                            <a href="cisat.html" class="block w-full">
-                                <div class="flex items-center gap-4 p-8 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-3xl hover:bg-primary/30 hover:shadow-2xl transition-all duration-400 cursor-pointer group border-2 border-transparent hover:border-primary/50">
-                                    <div class="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-2xl flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
-                                        <i class="fas fa-school text-2xl text-white"></i>
-                                    </div>
-                                    <div class="flex-1">
-                                        <h5 class="text-xl font-bold group-hover:text-white transition-colors">
-                                            SMK Cibitung 1
-                                        </h5>
-                                        <p class="text-gray-300 group-hover:text-white/90 transition-colors">Sistem Informasi Jaringan dan Aplikasi</p>
-                                        <p class="text-sm text-primary/80 mt-1 font-semibold group-hover:text-primary">Lihat Detail →</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        
-                        <!-- Pengalaman Kerja - Link ke pkl.html -->
-                        <div>
-                            <h4 class="text-2xl font-bold mb-6 text-primary flex items-center gap-3">
-                                <i class="fas fa-briefcase text-secondary"></i>
-                                Pengalaman Kerja
-                            </h4>
-                            <a href="pkl.html" class="block w-full">
-                                <div class="flex items-center gap-4 p-8 bg-gradient-to-r from-orange-500/20 to-orange-400/20 rounded-3xl hover:bg-orange-500/30 hover:shadow-2xl transition-all duration-400 cursor-pointer group border-2 border-transparent hover:border-orange-500/50">
-                                    <div class="w-16 h-16 bg-gradient-to-r from-orange-500 to-orange-400 rounded-2xl flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
-                                        <i class="fas fa-warehouse text-2xl text-white"></i>
-                                    </div>
-                                    <div class="flex-1">
-                                        <h5 class="text-xl font-bold group-hover:text-white transition-colors">
-                                            Praktik Kerja Lapangan (PKL)
-                                        </h5>
-                                        <p class="text-gray-300 group-hover:text-white/90 transition-colors">Staff Gudang Umum • 11 Bulan</p>
-                                        <p class="text-sm text-orange-400 mt-1 font-semibold group-hover:text-orange-300">Lihat Detail →</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="space-y-8">
-                        <div>
-                            <h4 class="text-2xl font-bold mb-6 text-primary flex items-center gap-3">
-                                <i class="fas fa-star text-secondary"></i>
-                                Kemampuan Utama
-                            </h4>
-                            <ul class="space-y-3 text-lg">
-                                <li class="flex items-center gap-3 p-6 bg-white/10 backdrop-blur-sm rounded-2xl hover:bg-white/20 hover:shadow-xl transition-all duration-300 border border-white/10">
-                                    <div class="w-8 h-8 bg-secondary/30 rounded-lg flex items-center justify-center flex-shrink-0">
-                                        <i class="fas fa-check text-secondary text-sm"></i>
-                                    </div>
-                                    <span class="font-semibold">Disiplin dan Teliti</span>
-                                </li>
-                                <li class="flex items-center gap-3 p-6 bg-white/10 backdrop-blur-sm rounded-2xl hover:bg-white/20 hover:shadow-xl transition-all duration-300 border border-white/10">
-                                    <div class="w-8 h-8 bg-secondary/30 rounded-lg flex items-center justify-center flex-shrink-0">
-                                        <i class="fas fa-check text-secondary text-sm"></i>
-                                    </div>
-                                    <span class="font-semibold">Pengelolaan Stok Barang</span>
-                                </li>
-                                <li class="flex items-center gap-3 p-6 bg-white/10 backdrop-blur-sm rounded-2xl hover:bg-white/20 hover:shadow-xl transition-all duration-300 border border-white/10">
-                                    <div class="w-8 h-8 bg-secondary/30 rounded-lg flex items-center justify-center flex-shrink-0">
-                                        <i class="fas fa-check text-secondary text-sm"></i>
-                                    </div>
-                                    <span class="font-semibold">Pencatatan Data</span>
-                                </li>
-                                <li class="flex items-center gap-3 p-6 bg-white/10 backdrop-blur-sm rounded-2xl hover:bg-white/20 hover:shadow-xl transition-all duration-300 border border-white/10">
-                                    <div class="w-8 h-8 bg-secondary/30 rounded-lg flex items-center justify-center flex-shrink-0">
-                                        <i class="fas fa-check text-secondary text-sm"></i>
-                                    </div>
-                                    <span class="font-semibold">Kerja Sama Tim</span>
-                                </li>
-                            </ul>
-                        </div>
 
-                        <!-- Quick Links -->
-                        <div class="pt-6 border-t border-white/20">
-                            <h4 class="text-xl font-bold mb-6 text-primary">Quick Links</h4>
-                            <div class="grid grid-cols-2 gap-3">
-                                <a href="cisat.html" class="group flex items-center gap-3 p-4 bg-primary/20 rounded-xl hover:bg-primary/40 transition-all duration-300">
-                                    <i class="fas fa-graduation-cap text-primary group-hover:text-white"></i>
-                                    <span class="font-medium group-hover:text-white">Pendidikan</span>
-                                </a>
-                                <a href="pkl.html" class="group flex items-center gap-3 p-4 bg-orange-500/20 rounded-xl hover:bg-orange-500/40 transition-all duration-300">
-                                    <i class="fas fa-briefcase text-orange-400 group-hover:text-orange-300"></i>
-                                    <span class="font-medium group-hover:text-white">PKL</span>
-                                </a>
+                    <!-- Skill -->
+                    <div>
+                        <h4 class="text-2xl font-bold mb-5 text-primary">Kemampuan</h4>
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div class="bg-white/10 p-5 rounded-2xl border border-white/10 hover:bg-white/15 transition">
+                                <i class="fas fa-check-circle text-primary mb-3 text-xl" aria-hidden="true"></i>
+                                <h5 class="font-bold mb-1">Disiplin</h5>
+                                <p class="text-sm text-gray-400">Tepat waktu dan bertanggung jawab</p>
+                            </div>
+                            <div class="bg-white/10 p-5 rounded-2xl border border-white/10 hover:bg-white/15 transition">
+                                <i class="fas fa-boxes-stacked text-primary mb-3 text-xl" aria-hidden="true"></i>
+                                <h5 class="font-bold mb-1">Stok Barang</h5>
+                                <p class="text-sm text-gray-400">Pengelolaan dan pengecekan stok</p>
+                            </div>
+                            <div class="bg-white/10 p-5 rounded-2xl border border-white/10 hover:bg-white/15 transition">
+                                <i class="fas fa-file-lines text-primary mb-3 text-xl" aria-hidden="true"></i>
+                                <h5 class="font-bold mb-1">Pencatatan Data</h5>
+                                <p class="text-sm text-gray-400">Pendataan dan dokumentasi</p>
+                            </div>
+                            <div class="bg-white/10 p-5 rounded-2xl border border-white/10 hover:bg-white/15 transition">
+                                <i class="fas fa-users text-primary mb-3 text-xl" aria-hidden="true"></i>
+                                <h5 class="font-bold mb-1">Team Work</h5>
+                                <p class="text-sm text-gray-400">Mampu bekerja sama dengan tim</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Call to Action -->
-            <div class="text-center mt-24">
-                <h3 class="text-3xl font-bold mb-6">Siap Bekerja dan Belajar!</h3>
-                <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                    Saya memiliki semangat belajar tinggi dan siap berkontribusi di lingkungan kerja profesional.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="https://mail.google.com/mail/?view=cm&to=andikacahyaaa1@email.com" target="_blank" class="bg-primary hover:bg-secondary px-12 py-5 rounded-2xl font-bold text-xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl inline-flex items-center gap-3">
-                     <i class="fas fa-envelope"></i>
-                     Email Saya
+                <!-- RIGHT -->
+                <div class="space-y-6">
+                    <!-- Pendidikan -->
+                    <a href="cisat.html" class="block bg-gradient-to-r from-primary/20 to-secondary/20 hover:from-primary/30 hover:to-secondary/30 p-7 rounded-3xl border border-primary/20 transition-all duration-300 hover:scale-[1.02]">
+                        <div class="flex gap-5 items-center">
+                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-r from-primary to-secondary flex items-center justify-center shadow-xl">
+                                <i class="fas fa-school text-2xl" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-bold">Pendidikan</h4>
+                                <p class="text-gray-300">SMK Cibitung 1</p>
+                                <p class="text-primary text-sm mt-1">Lihat Detail →</p>
+                            </div>
+                        </div>
                     </a>
-                    <a href="https://wa.me/6281398094377" target="_blank" class="border-2 border-white/50 hover:bg-white/20 px-12 py-5 rounded-2xl font-bold text-xl transition-all duration-300 hover:border-primary inline-flex items-center gap-3">
-                        <i class="fab fa-whatsapp"></i>
-                        WhatsApp
+
+                    <!-- PKL -->
+                    <a href="pkl.html" class="block bg-gradient-to-r from-orange-500/20 to-orange-400/20 hover:from-orange-500/30 hover:to-orange-400/30 p-7 rounded-3xl border border-orange-500/20 transition-all duration-300 hover:scale-[1.02]">
+                        <div class="flex gap-5 items-center">
+                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-r from-orange-500 to-orange-400 flex items-center justify-center shadow-xl">
+                                <i class="fas fa-briefcase text-2xl" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-bold">Pengalaman PKL</h4>
+                                <p class="text-gray-300">Staff Gudang Umum</p>
+                                <p class="text-orange-300 text-sm mt-1">Lihat Detail →</p>
+                            </div>
+                        </div>
                     </a>
+
+                    <!-- CTA -->
+                    <div class="bg-white/5 border border-white/10 p-8 rounded-3xl mt-10">
+                        <h4 class="text-2xl font-bold mb-4">Siap Bekerja dan Belajar</h4>
+                        <p class="text-gray-300 mb-6">
+                            Memiliki semangat tinggi untuk berkembang dan berkontribusi di dunia kerja profesional.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="https://mail.google.com/mail/?view=cm&to=andikacahyaaa1@gmail.com" target="_blank" rel="noopener noreferrer" class="bg-primary hover:bg-secondary px-6 py-3 rounded-xl font-bold transition">
+                                <i class="fas fa-envelope mr-2" aria-hidden="true"></i>
+                                Email
+                            </a>
+                            <a href="https://wa.me/6281398094377" target="_blank" rel="noopener noreferrer" class="border border-white/30 hover:bg-white/10 px-6 py-3 rounded-xl font-bold transition">
+                                <i class="fab fa-whatsapp mr-2" aria-hidden="true"></i>
+                                WhatsApp
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-16 border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <div class="flex flex-col items-center gap-4 mb-6">
-                <!-- Footer Profile Photo - Animasi Kedip Ringan -->
-                <div class="w-20 h-20 rounded-full overflow-hidden shadow-xl border-4 border-white/30 mx-auto animate-blink-glow">
-                    <img src="cahya.png" alt="Andika Cahya" class="w-full h-full object-cover">
-                </div>
-                <div class="flex items-center justify-center gap-3">
-                    <i class="fas fa-heart text-red-500 animate-pulse"></i>
-                    <span class="text-gray-400">© 2026 Andika Cahya</span>
-                </div>
+    <!-- ================= FOOTER ================= -->
+    <footer class="border-t border-white/10 py-10">
+        <div class="max-w-7xl mx-auto px-5 text-center">
+            <div class="w-20 h-20 rounded-full overflow-hidden border-4 border-primary mx-auto mb-5 animate-blink-glow">
+                <img src="cahya.png" alt="Foto profil Andika Cahya" class="w-full h-full object-cover" loading="lazy" />
             </div>
-            <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-500 mb-4">
-                <a href="cisat.html" class="hover:text-primary transition-colors">Pendidikan</a>
-                <a href="pkl.html" class="hover:text-primary transition-colors">PKL</a>
-                <a href="https://smkcibitung1.sch.id/" target="_blank" class="hover:text-primary transition-colors">
-                    SMK Cibitung 1
-                </a>
+            <h3 class="text-2xl font-bold mb-2">Andika Cahya</h3>
+            <p class="text-gray-400 mb-6">Sistem Informasi Jaringan dan Aplikasi</p>
+            <div class="flex flex-wrap justify-center gap-5 mb-6">
+                <a href="#home" class="hover:text-primary transition">Home</a>
+                <a href="#about" class="hover:text-primary transition">About</a>
+                <a href="cisat.html" class="hover:text-primary transition">Pendidikan</a>
+                <a href="pkl.html" class="hover:text-primary transition">PKL</a>
             </div>
-            <p class="text-xs text-gray-500">Sistem Informasi Jaringan dan Aplikasi</p>
+            <p class="text-gray-500 text-sm">© 2026 Andika Cahya. All Rights Reserved.</p>
         </div>
     </footer>
 
+    <!-- ================= SCRIPT ================= -->
     <script>
-        // Smooth scrolling untuk navigation links internal
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+        // Mobile Menu Toggle
+        (function() {
+            const menuBtn = document.getElementById("menuBtn");
+            const mobileMenu = document.getElementById("mobileMenu");
 
-        // Navbar scroll effect & active state
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                navbar.classList.add('bg-black/95', 'shadow-2xl');
-            } else {
-                navbar.classList.remove('bg-black/95', 'shadow-2xl');
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener("click", () => {
+                    mobileMenu.classList.toggle("active");
+                });
             }
-        });
+        })();
 
-        // Animate on scroll - HANYA UNTUK SECTION (bukan foto)
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // Navbar Scroll Effect
+        (function() {
+            const navbar = document.getElementById("navbar");
+            if (navbar) {
+                window.addEventListener("scroll", () => {
+                    if (window.scrollY > 50) {
+                        navbar.classList.add("bg-black/90", "shadow-2xl");
+                    } else {
+                        navbar.classList.remove("bg-black/90", "shadow-2xl");
+                    }
+                });
+            }
+        })();
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
+        // Scroll Animation
+        (function() {
+            const sections = document.querySelectorAll("section");
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = "1";
+                        entry.target.style.transform = "translateY(0)";
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach((section) => {
+                section.style.opacity = "0";
+                section.style.transform = "translateY(40px)";
+                section.style.transition = "all 0.8s ease";
+                observer.observe(section);
             });
-        }, observerOptions);
-
-        // Observe hanya sections (bukan foto)
-        document.querySelectorAll('section[id]').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(40px)';
-            section.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-            observer.observe(section);
-        });
+        })();
     </script>
-
 </body>
 </html>
